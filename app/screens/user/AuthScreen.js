@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ScrollView,
   View,
@@ -6,53 +6,31 @@ import {
   StyleSheet,
   Button,
   ActivityIndicator,
-  Alert,
   Keyboard,
   TouchableWithoutFeedback,
   Platform,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-
-import Input from '../../components/UI/Input';
+import { useForm } from 'react-hook-form';
 import Card from '../../components/UI/Card';
 import Colors from '../../constants/Colors';
-
-const FORM_INPUT_UPDATE = 'FORM_INPUT_UPDATE';
+import Input from '../../components/UI/Input';
+import { LinearGradient } from 'expo-linear-gradient';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { AuthenticationFormSchema } from '../../utils/validatiors/AuthenticationFormValidation';
 
 const AuthScreen = (props) => {
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(AuthenticationFormSchema),
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
   const [isSignup, setIsSignup] = useState(false);
 
-  //   const [formState, dispatchFormState] = useReducer(formReducer, {
-  //     inputValues: {
-  //       email: '',
-  //       password: '',
-  //     },
-  //     inputValidities: {
-  //       email: false,
-  //       password: false,
-  //     },
-  //     formIsValid: false,
-  //   });
-
-  useEffect(() => {
-    if (error) {
-      Alert.alert('An Error Occurred!', error, [{ text: 'Okay' }]);
-    }
-  }, [error]);
-
-  //   const inputChangeHandler = useCallback(
-  //     (inputIdentifier, inputValue, inputValidity) => {
-  //       dispatchFormState({
-  //         type: FORM_INPUT_UPDATE,
-  //         value: inputValue,
-  //         isValid: inputValidity,
-  //         input: inputIdentifier,
-  //       });
-  //     },
-  //     [dispatchFormState]
-  //   );
+  const onSubmit = (data) => console.log('data', data);
 
   return (
     <KeyboardAvoidingView
@@ -65,33 +43,32 @@ const AuthScreen = (props) => {
           <Card style={styles.authContainer}>
             <ScrollView>
               <Input
-                id="email"
                 label="E-Mail"
+                name="email"
                 keyboardType="email-address"
-                required
-                email
                 autoCapitalize="none"
-                errorText="Please enter a valid email address."
-                //   onInputChange={inputChangeHandler}
-                initialValue=""
+                control={control}
+                errors={errors}
               />
               <Input
-                id="password"
                 label="Password"
+                name="password"
                 keyboardType="default"
                 secureTextEntry
-                required
                 minLength={5}
                 autoCapitalize="none"
-                errorText="Please enter a valid password."
-                //   onInputChange={inputChangeHandler}
-                initialValue=""
+                control={control}
+                errors={errors}
               />
               <View style={styles.buttonContainer}>
                 {isLoading ? (
                   <ActivityIndicator size="small" color={Colors.primary} />
                 ) : (
-                  <Button title={isSignup ? 'Sign Up' : 'Login'} color={Colors.primary} />
+                  <Button
+                    title={isSignup ? 'Sign Up' : 'Login'}
+                    color={Colors.primary}
+                    onPress={handleSubmit(onSubmit)}
+                  />
                 )}
               </View>
               <View style={styles.buttonContainer}>

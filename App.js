@@ -14,7 +14,13 @@ const App = () => {
   const [fontLoaded, setFontLoaded] = useState(false);
 
   if (!fontLoaded) {
-    return <AppLoading startAsync={fetchFonts} onFinish={() => setFontLoaded(true)} onError={console.warn} />;
+    return (
+      <AppLoading
+        startAsync={fetchFonts}
+        onFinish={() => setFontLoaded(true)}
+        onError={console.warn}
+      />
+    );
   }
 
   return <RootNavigator />;
