@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
 import { Controller } from 'react-hook-form';
+import Colors from '../../constants/Colors';
 
 const Input = ({ name, label, control, errors, rules, ...rest }) => {
   return (
@@ -22,7 +23,9 @@ const Input = ({ name, label, control, errors, rules, ...rest }) => {
         defaultValue=""
       />
       {errors[name] && (
-        <Text style={styles.errorText}>{errors[name].message}</Text>
+        <View style={styles.errorContainer}>
+          <Text style={styles.errorText}>{errors[name].message}</Text>
+        </View>
       )}
     </View>
   );
@@ -39,7 +42,7 @@ const styles = StyleSheet.create({
   input: {
     paddingHorizontal: 2,
     paddingVertical: 5,
-    borderBottomColor: '#ccc',
+    borderBottomColor: Colors.silver,
     borderBottomWidth: 1,
   },
   errorContainer: {
@@ -47,7 +50,7 @@ const styles = StyleSheet.create({
   },
   errorText: {
     fontFamily: 'open-sans',
-    color: 'red',
+    color: Colors.red,
     fontSize: 13,
   },
 });

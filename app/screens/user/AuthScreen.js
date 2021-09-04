@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   ScrollView,
   View,
@@ -11,14 +11,14 @@ import {
   Platform,
 } from 'react-native';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { LinearGradient } from 'expo-linear-gradient';
 import Card from '../../components/UI/Card';
 import Colors from '../../constants/Colors';
 import Input from '../../components/UI/Input';
-import { LinearGradient } from 'expo-linear-gradient';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { AuthenticationFormSchema } from '../../utils/validatiors/AuthenticationFormValidation';
+import AuthenticationFormSchema from '../../utils/validatiors/AuthenticationFormValidation';
 
-const AuthScreen = (props) => {
+const AuthScreen = () => {
   const {
     handleSubmit,
     control,
@@ -26,8 +26,8 @@ const AuthScreen = (props) => {
   } = useForm({
     resolver: yupResolver(AuthenticationFormSchema),
   });
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState();
+  const [isLoading] = useState(false);
+  // const [error, setError] = useState();
   const [isSignup, setIsSignup] = useState(false);
 
   const onSubmit = (data) => console.log('data', data);
@@ -35,7 +35,7 @@ const AuthScreen = (props) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      keyboardVerticalOffset={50}
+      keyboardVerticalOffset={100}
       style={styles.screen}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>

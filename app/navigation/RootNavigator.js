@@ -1,8 +1,8 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import Colors from '../constants/Colors';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Colors from '../constants/Colors';
 import AuthScreen, {
   screenOptions as authScreenOption,
 } from '../screens/user/AuthScreen';
@@ -22,7 +22,7 @@ const defaultNavOptions = {
 
 const Stack = createNativeStackNavigator();
 
-export const RootNavigator = () => {
+const RootNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={defaultNavOptions}>
@@ -35,3 +35,5 @@ export const RootNavigator = () => {
     </NavigationContainer>
   );
 };
+
+export default RootNavigator;
