@@ -7,6 +7,10 @@ module.exports = {
     'react-native/react-native': true,
   },
   rules: {
+    'global-require': 0,
+    indent: 'off',
+    'react/jsx-indent': 'off',
+    'react/jsx-indent-props': 'off',
     'no-use-before-define': 'off',
     'object-curly-newline': 'off',
     'react/destructuring-assignment': 'off',

@@ -1,47 +1,77 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import Colors from '../constants/Colors';
-import AuthScreen, {
-  screenOptions as authScreenOption,
-} from '../screens/AuthScreen';
+import Login, {
+  screenOptions as loginScreenOption,
+} from '../screens/auth/Login';
+import Register, {
+  screenOptions as registerScreenOption,
+} from '../screens/auth/Register';
 import Dashboard, {
-  screenOptions as DashboardScreenOption,
+  screenOptions as dashboard2ScreenOption,
+} from '../screens/Dashboard';
+import Dashboard2, {
+  screenOptions as dashboardScreenOption,
+} from '../screens/Dashboard2';
+import WelcomeScreen, {
+  screenOptions as welcomeScreenOption,
 } from '../screens/WelcomeScreen';
 
 const defaultNavOptions = {
   headerStyle: {
-    backgroundColor: Platform.OS === 'android' ? Colors.primary : '',
+    backgroundColor:
+      Platform.OS === 'android' ? Colors.primary : Colors.primary,
   },
+  headerBackVisible: false,
   headerTitleStyle: {
     fontFamily: 'open-sans-bold',
   },
   headerBackTitleStyle: {
     fontFamily: 'open-sans',
   },
-  headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primary,
+  headerTintColor: Colors.white,
 };
 
-const Stack = createNativeStackNavigator();
-
-const RootNavigator = () => {
+const AuthStackNavigator = createNativeStackNavigator();
+export const AuthNavigatior = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={defaultNavOptions}>
-        <Stack.Screen
-          name="Home"
-          component={AuthScreen}
-          options={authScreenOption}
-        />
-        <Stack.Screen
-          name="Dashboard"
-          component={Dashboard}
-          options={DashboardScreenOption}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <AuthStackNavigator.Navigator screenOptions={defaultNavOptions}>
+      <AuthStackNavigator.Screen
+        name="WelocmeScreen"
+        component={WelcomeScreen}
+        options={welcomeScreenOption}
+      />
+      <AuthStackNavigator.Screen
+        name="AuthScreeen"
+        component={Login}
+        options={loginScreenOption}
+      />
+      <AuthStackNavigator.Screen
+        name="Register"
+        component={Register}
+        options={registerScreenOption}
+      />
+    </AuthStackNavigator.Navigator>
   );
 };
 
-export default RootNavigator;
+const ScreensDrawerNavigator = createDrawerNavigator();
+
+export const ScreensNavigator = () => {
+  return (
+    <ScreensDrawerNavigator.Navigator screenOptions={defaultNavOptions}>
+      <ScreensDrawerNavigator.Screen
+        name="Dashboard"
+        component={Dashboard}
+        options={dashboardScreenOption}
+      />
+      <ScreensDrawerNavigator.Screen
+        name="Dashboard2"
+        component={Dashboard2}
+        options={dashboard2ScreenOption}
+      />
+    </ScreensDrawerNavigator.Navigator>
+  );
+};

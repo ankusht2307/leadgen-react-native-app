@@ -1,24 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   ScrollView,
-  View,
   KeyboardAvoidingView,
   StyleSheet,
-  Button,
-  ActivityIndicator,
   Keyboard,
   TouchableWithoutFeedback,
   Platform,
 } from 'react-native';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LinearGradient } from 'expo-linear-gradient';
-import Card from '../components/UI/Card';
-import Colors from '../constants/Colors';
-import Input from '../components/UI/Input';
-import AuthenticationFormSchema from '../utils/validatiors/AuthenticationFormValidation';
+import Card from '../../components/UI/Card';
+import Colors from '../../constants/Colors';
+import AppInput from '../../components/UI/Input';
+import AppButton from '../../components/UI/Button';
+import AuthenticationFormSchema from '../../utils/validatiors/AuthenticationFormValidation';
+import signIn from '../../redux/actions/AuthActions';
 
-const AuthScreen = ({ navigation }) => {
+const Login = ({ navigation }) => {
+  const dispatch = useDispatch();
   const {
     handleSubmit,
     control,
@@ -26,24 +27,21 @@ const AuthScreen = ({ navigation }) => {
   } = useForm({
     resolver: yupResolver(AuthenticationFormSchema),
   });
-  const [isLoading] = useState(false);
-  // const [error, setError] = useState();
-  const [isSignup, setIsSignup] = useState(false);
 
   const onSubmit = () => {
-    navigation.navigate('Dashboard');
+    dispatch(signIn());
   };
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      keyboardVerticalOffset={100}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 100}
       style={styles.screen}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <LinearGradient colors={['#ffedff', '#ffe3ff']} style={styles.gradient}>
-          <Card style={styles.authContainer}>
+        <LinearGradient colors={['#ffe3ff', '#9ae184']} style={styles.gradient}>
+          <Card style={styles.loginContainer}>
             <ScrollView keyboardShouldPersistTaps="always">
-              <Input
+              <AppInput
                 label="E-Mail"
                 name="email"
                 keyboardType="email-address"
@@ -51,7 +49,7 @@ const AuthScreen = ({ navigation }) => {
                 control={control}
                 errors={errors}
               />
-              <Input
+              <AppInput
                 label="Password"
                 name="password"
                 keyboardType="default"
@@ -61,26 +59,18 @@ const AuthScreen = ({ navigation }) => {
                 control={control}
                 errors={errors}
               />
-              <View style={styles.buttonContainer}>
-                {isLoading ? (
-                  <ActivityIndicator size="small" color={Colors.primary} />
-                ) : (
-                  <Button
-                    title={isSignup ? 'Sign Up' : 'Login'}
-                    color={Colors.primary}
-                    onPress={handleSubmit(onSubmit)}
-                  />
-                )}
-              </View>
-              <View style={styles.buttonContainer}>
-                <Button
-                  title={`Switch to ${isSignup ? 'Login' : 'Sign Up'}`}
-                  color={Colors.accent}
-                  onPress={() => {
-                    setIsSignup((prevState) => !prevState);
-                  }}
-                />
-              </View>
+              <AppButton
+                title="Register"
+                color={Colors.primary}
+                onPress={handleSubmit(onSubmit)}
+              />
+              <AppButton
+                title="Switch to Login"
+                color={Colors.accent}
+                onPress={() => {
+                  navigation.replace('AuthScreeen');
+                }}
+              />
             </ScrollView>
           </Card>
         </LinearGradient>
@@ -90,7 +80,7 @@ const AuthScreen = ({ navigation }) => {
 };
 
 export const screenOptions = {
-  headerTitle: 'Authenticate',
+  headerTitle: 'Register',
 };
 
 const styles = StyleSheet.create({
@@ -102,15 +92,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  authContainer: {
+  loginContainer: {
     width: '80%',
     maxWidth: 400,
     maxHeight: 400,
     padding: 20,
   },
-  buttonContainer: {
-    marginTop: 10,
-  },
 });
 
-export default AuthScreen;
+export default Login;
