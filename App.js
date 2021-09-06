@@ -2,6 +2,9 @@
 import * as Font from 'expo-font';
 import React, { useState } from 'react';
 import AppLoading from 'expo-app-loading';
+import { Provider } from 'react-redux';
+
+import store from './app/redux/store';
 import RootNavigator from './app/navigation/RootNavigator';
 
 const fetchFonts = () => {
@@ -23,7 +26,11 @@ const App = () => {
     );
   }
 
-  return <RootNavigator />;
+  return (
+    <Provider store={store}>
+      <RootNavigator />
+    </Provider>
+  );
 };
 
 export default App;

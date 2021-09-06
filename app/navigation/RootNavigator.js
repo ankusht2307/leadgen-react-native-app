@@ -5,7 +5,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Colors from '../constants/Colors';
 import AuthScreen, {
   screenOptions as authScreenOption,
-} from '../screens/user/AuthScreen';
+} from '../screens/AuthScreen';
+import Dashboard, {
+  screenOptions as DashboardScreenOption,
+} from '../screens/WelcomeScreen';
 
 const defaultNavOptions = {
   headerStyle: {
@@ -30,6 +33,11 @@ const RootNavigator = () => {
           name="Home"
           component={AuthScreen}
           options={authScreenOption}
+        />
+        <Stack.Screen
+          name="Dashboard"
+          component={Dashboard}
+          options={DashboardScreenOption}
         />
       </Stack.Navigator>
     </NavigationContainer>

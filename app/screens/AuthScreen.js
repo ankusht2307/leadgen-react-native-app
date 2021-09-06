@@ -13,12 +13,12 @@ import {
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LinearGradient } from 'expo-linear-gradient';
-import Card from '../../components/UI/Card';
-import Colors from '../../constants/Colors';
-import Input from '../../components/UI/Input';
-import AuthenticationFormSchema from '../../utils/validatiors/AuthenticationFormValidation';
+import Card from '../components/UI/Card';
+import Colors from '../constants/Colors';
+import Input from '../components/UI/Input';
+import AuthenticationFormSchema from '../utils/validatiors/AuthenticationFormValidation';
 
-const AuthScreen = () => {
+const AuthScreen = ({ navigation }) => {
   const {
     handleSubmit,
     control,
@@ -30,8 +30,9 @@ const AuthScreen = () => {
   // const [error, setError] = useState();
   const [isSignup, setIsSignup] = useState(false);
 
-  const onSubmit = (data) => console.log('data', data);
-
+  const onSubmit = () => {
+    navigation.navigate('Dashboard');
+  };
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -41,7 +42,7 @@ const AuthScreen = () => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <LinearGradient colors={['#ffedff', '#ffe3ff']} style={styles.gradient}>
           <Card style={styles.authContainer}>
-            <ScrollView>
+            <ScrollView keyboardShouldPersistTaps="always">
               <Input
                 label="E-Mail"
                 name="email"
