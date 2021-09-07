@@ -1,18 +1,30 @@
 import React from 'react';
-import { Button, StyleSheet, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-const CButton = (props) => {
+const Button = ({ title, onHit, btnColor }) => {
   return (
-    <View style={styles.buttonContainer}>
-      <Button {...props} />
-    </View>
+    <TouchableOpacity onPress={onHit}>
+      <View style={{ ...styles.buttonContainer, backgroundColor: btnColor }}>
+        <Text style={styles.title}>{title}</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   buttonContainer: {
     marginTop: 10,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 40,
+  },
+  title: {
+    color: Colors.white,
+    fontSize: 15,
+    fontWeight: 'bold',
   },
 });
 
-export default CButton;
+export default Button;

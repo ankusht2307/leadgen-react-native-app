@@ -1,5 +1,7 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
+  View,
   ScrollView,
   KeyboardAvoidingView,
   StyleSheet,
@@ -10,15 +12,15 @@ import {
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { LinearGradient } from 'expo-linear-gradient';
 import Card from '../../components/UI/Card';
 import Colors from '../../constants/Colors';
 import AppInput from '../../components/UI/Input';
 import AppButton from '../../components/UI/Button';
 import AuthenticationFormSchema from '../../utils/validatiors/AuthenticationFormValidation';
 import signIn from '../../redux/actions/AuthActions';
+import Gradient from '../../components/Gradient';
 
-const Login = ({ navigation }) => {
+const Register = ({ navigation }) => {
   const dispatch = useDispatch();
   const {
     handleSubmit,
@@ -31,49 +33,52 @@ const Login = ({ navigation }) => {
   const onSubmit = () => {
     dispatch(signIn());
   };
+
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 100}
+      behavior={Platform.OS === 'android' && 'height'}
+      keyboardVerticalOffset={Platform.OS === 'android' && 100}
       style={styles.screen}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <LinearGradient colors={['#ffe3ff', '#9ae184']} style={styles.gradient}>
-          <Card style={styles.loginContainer}>
-            <ScrollView keyboardShouldPersistTaps="always">
-              <AppInput
-                label="E-Mail"
-                name="email"
-                keyboardType="email-address"
-                autoCapitalize="none"
-                control={control}
-                errors={errors}
-              />
-              <AppInput
-                label="Password"
-                name="password"
-                keyboardType="default"
-                secureTextEntry
-                minLength={5}
-                autoCapitalize="none"
-                control={control}
-                errors={errors}
-              />
-              <AppButton
-                title="Register"
-                color={Colors.primary}
-                onPress={handleSubmit(onSubmit)}
-              />
-              <AppButton
-                title="Switch to Login"
-                color={Colors.accent}
-                onPress={() => {
-                  navigation.replace('AuthScreeen');
-                }}
-              />
-            </ScrollView>
-          </Card>
-        </LinearGradient>
+        <View style={styles.screen}>
+          <Gradient styleProps={{ alignItems: 'center', justifyContent: 'center' }}>
+            <Card style={styles.loginContainer}>
+              <ScrollView keyboardShouldPersistTaps="always">
+                <AppInput
+                  label="E-Mail"
+                  name="email"
+                  keyboardType="email-address"
+                  autoCapitalize="none"
+                  control={control}
+                  errors={errors}
+                />
+                <AppInput
+                  label="Password"
+                  name="password"
+                  keyboardType="default"
+                  secureTextEntry
+                  minLength={5}
+                  autoCapitalize="none"
+                  control={control}
+                  errors={errors}
+                />
+                <AppButton
+                  title="Register"
+                  btnColor={Colors.primary}
+                  onHit={handleSubmit(onSubmit)}
+                />
+                <AppButton
+                  title="Switch to Login"
+                  btnColor={Colors.accent}
+                  onHit={() => {
+                    navigation.replace('AuthScreeen');
+                  }}
+                />
+              </ScrollView>
+            </Card>
+          </Gradient>
+        </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
@@ -87,11 +92,6 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
   },
-  gradient: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   loginContainer: {
     width: '80%',
     maxWidth: 400,
@@ -100,4 +100,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default Register;

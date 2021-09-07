@@ -1,10 +1,7 @@
 import * as yup from 'yup';
 
 const AuthenticationFormSchema = yup.object().shape({
-  email: yup
-    .string()
-    .email('not a valid email')
-    .required('email must not be empty.'),
+  email: yup.string().email('not a valid email').required('email must not be empty.'),
   password: yup
     .string()
     .required('pmail must not be empty.')

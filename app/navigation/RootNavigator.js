@@ -3,28 +3,17 @@ import { Platform } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Colors from '../constants/Colors';
-import Login, {
-  screenOptions as loginScreenOption,
-} from '../screens/auth/Login';
-import Register, {
-  screenOptions as registerScreenOption,
-} from '../screens/auth/Register';
-import Dashboard, {
-  screenOptions as dashboard2ScreenOption,
-} from '../screens/Dashboard';
-import Dashboard2, {
-  screenOptions as dashboardScreenOption,
-} from '../screens/Dashboard2';
-import WelcomeScreen, {
-  screenOptions as welcomeScreenOption,
-} from '../screens/WelcomeScreen';
+import Login, { screenOptions as loginScreenOption } from '../screens/auth/Login';
+import Register, { screenOptions as registerScreenOption } from '../screens/auth/Register';
+import Dashboard, { screenOptions as dashboardScreenOption } from '../screens/Dashboard';
+import Dashboard2, { screenOptions as dashboard2ScreenOption } from '../screens/Dashboard2';
+import WelcomeScreen, { screenOptions as welcomeScreenOption } from '../screens/WelcomeScreen';
 
 const defaultNavOptions = {
   headerStyle: {
-    backgroundColor:
-      Platform.OS === 'android' ? Colors.primary : Colors.primary,
+    backgroundColor: Platform.OS === 'android' ? Colors.primary : Colors.primary,
   },
-  headerBackVisible: false,
+  headerBackVisible: Platform.OS === 'android' && true,
   headerTitleStyle: {
     fontFamily: 'open-sans-bold',
   },
@@ -43,11 +32,7 @@ export const AuthNavigatior = () => {
         component={WelcomeScreen}
         options={welcomeScreenOption}
       />
-      <AuthStackNavigator.Screen
-        name="AuthScreeen"
-        component={Login}
-        options={loginScreenOption}
-      />
+      <AuthStackNavigator.Screen name="AuthScreeen" component={Login} options={loginScreenOption} />
       <AuthStackNavigator.Screen
         name="Register"
         component={Register}
