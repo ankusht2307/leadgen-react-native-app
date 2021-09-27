@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b35f228f-d26b-4f92-9f40-b9d28dcf7cf5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/redux/reducers/AuthReducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/redux/reducers/AuthReducers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/redux/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/screens/auth/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/auth/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +28,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
@@ -35,11 +42,5 @@
       <updated>1630651837299</updated>
     </task>
     <servers />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="2020" y="127" width="1720" height="813" key="AVDManager" timestamp="1630651916070">
-      <screen x="1920" y="0" width="1920" height="1080" />
-    </state>
-    <state x="2020" y="127" width="1720" height="813" key="AVDManager/1920.0.1920.1080/0.27.1920.1013@1920.0.1920.1080" timestamp="1630651916070" />
   </component>
 </project>
