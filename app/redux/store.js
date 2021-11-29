@@ -1,9 +1,9 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import ReduxThunk from 'redux-thunk';
-import signInReducer from './reducers/AuthReducers';
+import { loginReducer } from './login/loginReducer';
 
 const rootReducer = combineReducers({
-  auth: signInReducer,
+  login: loginReducer,
 });
 
 /* eslint-disable no-underscore-dangle */

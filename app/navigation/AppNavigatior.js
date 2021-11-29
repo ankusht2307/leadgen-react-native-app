@@ -4,13 +4,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { AuthNavigatior, ScreensNavigator } from './RootNavigator';
 
 const AppNavigator = () => {
-  const auth = useSelector((state) => state.auth);
-  const { isAuthenticated } = auth;
+  const user = useSelector((state) => state.login.user);
 
   return (
     <NavigationContainer>
-      {!isAuthenticated && <AuthNavigatior />}
-      {isAuthenticated && <ScreensNavigator />}
+      {!user && <AuthNavigatior />}
+      {user && <ScreensNavigator />}
     </NavigationContainer>
   );
 };

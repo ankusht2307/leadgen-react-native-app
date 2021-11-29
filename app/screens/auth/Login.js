@@ -17,8 +17,8 @@ import Colors from '../../constants/Colors';
 import AppInput from '../../components/UI/Input';
 import AppButton from '../../components/UI/Button';
 import AuthenticationFormSchema from '../../utils/validatiors/AuthenticationFormValidation';
-import signIn from '../../redux/actions/AuthActions';
 import Gradient from '../../components/Gradient';
+import { requestLogin } from '../../redux/login/loginReducer';
 
 const Login = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -30,8 +30,8 @@ const Login = ({ navigation }) => {
     resolver: yupResolver(AuthenticationFormSchema),
   });
 
-  const onSubmit = () => {
-    dispatch(signIn());
+  const onSubmit = (data) => {
+    dispatch(requestLogin(data));
   };
 
   return (
@@ -42,7 +42,9 @@ const Login = ({ navigation }) => {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.screen}>
-          <Gradient styleProps={{ alignItems: 'center', justifyContent: 'center' }}>
+          <Gradient
+            styleProps={{ alignItems: 'center', justifyContent: 'center' }}
+          >
             <Card style={styles.loginContainer}>
               <ScrollView keyboardShouldPersistTaps="always">
                 <AppInput
@@ -63,7 +65,11 @@ const Login = ({ navigation }) => {
                   control={control}
                   errors={errors}
                 />
-                <AppButton title="Login" btnColor={Colors.primary} onHit={handleSubmit(onSubmit)} />
+                <AppButton
+                  title="Login"
+                  btnColor={Colors.primary}
+                  onHit={handleSubmit(onSubmit)}
+                />
                 <AppButton
                   title="Switch to Register"
                   btnColor={Colors.accent}

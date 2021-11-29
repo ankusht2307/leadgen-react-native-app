@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b35f228f-d26b-4f92-9f40-b9d28dcf7cf5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/redux/reducers/AuthReducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/redux/reducers/AuthReducers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/redux/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/constants/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/constants/constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/screens/auth/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/auth/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/screens/auth/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/auth/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/auth/register.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/auth/register.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

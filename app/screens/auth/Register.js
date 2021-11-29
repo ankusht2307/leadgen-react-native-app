@@ -12,6 +12,7 @@ import {
 import { useForm } from 'react-hook-form';
 // import { useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
+import axios from 'axios';
 import Card from '../../components/UI/Card';
 import Colors from '../../constants/Colors';
 import AppInput from '../../components/UI/Input';
@@ -20,6 +21,7 @@ import AuthenticationFormSchema from '../../utils/validatiors/AuthenticationForm
 // import signIn from '../../redux/actions/AuthActions';
 import Gradient from '../../components/Gradient';
 import RegisterService from '../../services/auth/register.service';
+import { ApiUrl } from '../../constants/constants';
 
 const Register = ({ navigation }) => {
   // const dispatch = useDispatch();
@@ -32,8 +34,11 @@ const Register = ({ navigation }) => {
   });
 
   const onSubmit = async (data) => {
-    const result = await RegisterService(data);
-    console.log('dfhfh', result);
+    const result = await axios
+      .post(`${ApiUrl}/auth/register`, data)
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
+    console.log(result);
   };
 
   return (
@@ -44,7 +49,9 @@ const Register = ({ navigation }) => {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.screen}>
-          <Gradient styleProps={{ alignItems: 'center', justifyContent: 'center' }}>
+          <Gradient
+            styleProps={{ alignItems: 'center', justifyContent: 'center' }}
+          >
             <Card style={styles.loginContainer}>
               <ScrollView keyboardShouldPersistTaps="always">
                 <AppInput
