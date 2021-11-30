@@ -10,21 +10,18 @@ import {
   Platform,
 } from 'react-native';
 import { useForm } from 'react-hook-form';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
-import axios from 'axios';
 import Card from '../../components/UI/Card';
 import Colors from '../../constants/Colors';
 import AppInput from '../../components/UI/Input';
 import AppButton from '../../components/UI/Button';
 import AuthenticationFormSchema from '../../utils/validatiors/AuthenticationFormValidation';
-// import signIn from '../../redux/actions/AuthActions';
 import Gradient from '../../components/Gradient';
-import RegisterService from '../../services/auth/register.service';
-import { ApiUrl } from '../../constants/constants';
+import { requestRegister } from '../../redux/register/registerReducer';
 
 const Register = ({ navigation }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const {
     handleSubmit,
     control,
@@ -34,11 +31,7 @@ const Register = ({ navigation }) => {
   });
 
   const onSubmit = async (data) => {
-    const result = await axios
-      .post(`${ApiUrl}/auth/register`, data)
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
-    console.log(result);
+    dispatch(requestRegister(data));
   };
 
   return (
