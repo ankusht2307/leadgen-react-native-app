@@ -5,11 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b35f228f-d26b-4f92-9f40-b9d28dcf7cf5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/components/UI/Picker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/screens/CreateUser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/utils/validatiors/UserSchema.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/constants/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/constants/constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/screens/auth/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/auth/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/navigation/AppNavigatior.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/navigation/AppNavigatior.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/navigation/RootNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/navigation/RootNavigator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/redux/register/registerActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/redux/register/registerActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/redux/register/registerReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/redux/register/registerReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/redux/store.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/screens/auth/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/auth/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/auth/register.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/auth/register.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/auth/login.service.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/auth/register.service.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

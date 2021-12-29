@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   View,
   ScrollView,
@@ -10,7 +10,7 @@ import {
   Platform,
 } from 'react-native';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Card from '../../components/UI/Card';
 import Colors from '../../constants/Colors';
@@ -18,10 +18,20 @@ import AppInput from '../../components/UI/Input';
 import AppButton from '../../components/UI/Button';
 import AuthenticationFormSchema from '../../utils/validatiors/AuthenticationFormValidation';
 import Gradient from '../../components/Gradient';
-import { requestRegister } from '../../redux/register/registerReducer';
+import { requestRegister } from '../../redux/register/registerActions';
 
 const Register = ({ navigation }) => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.register.user);
+
+  useEffect(() => {
+    console.log('useffect', user);
+    if (user.data) {
+      console.log(navigation);
+      navigation.navigate('AuthScreeen');
+    }
+  }, [user.data]);
+
   const {
     handleSubmit,
     control,
@@ -30,7 +40,7 @@ const Register = ({ navigation }) => {
     resolver: yupResolver(AuthenticationFormSchema),
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     dispatch(requestRegister(data));
   };
 

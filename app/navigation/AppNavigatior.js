@@ -8,8 +8,8 @@ const AppNavigator = () => {
 
   return (
     <NavigationContainer>
-      {!user && <AuthNavigatior />}
-      {user && <ScreensNavigator />}
+      {user && <AuthNavigatior />}
+      {!user && <ScreensNavigator />}
     </NavigationContainer>
   );
 };

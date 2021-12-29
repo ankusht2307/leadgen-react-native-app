@@ -8,6 +8,7 @@ import Register, { screenOptions as registerScreenOption } from '../screens/auth
 import Dashboard, { screenOptions as dashboardScreenOption } from '../screens/Dashboard';
 import Dashboard2, { screenOptions as dashboard2ScreenOption } from '../screens/Dashboard2';
 import WelcomeScreen, { screenOptions as welcomeScreenOption } from '../screens/WelcomeScreen';
+import CreateUser, { screenOptions as createUserScreenOptions } from '../screens/CreateUser';
 
 const defaultNavOptions = {
   headerStyle: {
@@ -56,6 +57,11 @@ export const ScreensNavigator = () => {
         name="Dashboard2"
         component={Dashboard2}
         options={dashboard2ScreenOption}
+      />
+      <ScreensDrawerNavigator.Screen
+        name="Create User"
+        component={CreateUser}
+        options={createUserScreenOptions}
       />
     </ScreensDrawerNavigator.Navigator>
   );
