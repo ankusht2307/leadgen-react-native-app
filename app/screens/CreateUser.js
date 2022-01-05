@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import {
@@ -10,6 +10,9 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import Toast from 'react-native-toast-message';
+
 import Gradient from '../components/Gradient';
 import Card from '../components/UI/Card';
 import AppInput from '../components/UI/Input';
@@ -17,21 +20,34 @@ import AppButton from '../components/UI/Button';
 import Colors from '../constants/Colors';
 import UserSchema from '../utils/validatiors/UserSchema';
 import AppPicker from '../components/UI/Picker';
+import createUser from '../service/user/userService';
+import {
+  fetchUserFailure,
+  fetchUserRequest,
+  fetchUserSuccess,
+} from '../redux/user/userActions';
 
-const CreateUser = () => {
+const CreateUser = ({ navigation }) => {
   const roles = [
     { label: 'Choose role', value: '' },
+    { label: 'Admin', value: 'admin' },
+    { label: 'Super Admin', value: 'super-admin' },
+    { label: 'User', value: 'user' },
+  ];
+  const desinations = [
+    { label: 'Choose designation', value: '' },
     { label: 'Software Engineer', value: 'software engineer' },
     { label: 'BDE', value: 'bde' },
     { label: 'Management Trainee', value: 'mt' },
     { label: 'Software Eng. Trainee', value: 'set' },
   ];
-  const desinations = [
-    { label: 'Choose designation', value: '' },
-    { label: 'Team Lead', value: 'TL' },
-    { label: 'Project Manger', value: 'PM' },
-    { label: 'Human Resources', value: 'HR' },
-  ];
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+
+  useEffect(() => {
+    // console.log(user);
+  }, [user]);
+
   const {
     handleSubmit,
     control,
@@ -39,9 +55,26 @@ const CreateUser = () => {
   } = useForm({
     resolver: yupResolver(UserSchema),
   });
-  const onSubmit = (data) => {
-    console.log(data);
+
+  const onSubmit = async (data) => {
+    dispatch(fetchUserRequest);
+    const result = await createUser(data);
+    if (result.data) {
+      Toast.show({
+        type: 'success',
+        text2: result.message,
+      });
+      dispatch(fetchUserSuccess(result.data));
+      navigation.navigate('Users');
+    } else {
+      dispatch(fetchUserFailure(result));
+      Toast.show({
+        type: 'error',
+        text2: result.message,
+      });
+    }
   };
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -61,14 +94,6 @@ const CreateUser = () => {
                   control={control}
                   errors={errors}
                 />
-                {/* <AppInput
-                  label="Designation"
-                  name="designation"
-                  keyboardType="default"
-                  autoCapitalize="none"
-                  control={control}
-                  errors={errors}
-                /> */}
                 <AppPicker
                   label="Designation"
                   name="designation"
