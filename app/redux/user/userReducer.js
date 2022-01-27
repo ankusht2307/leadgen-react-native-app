@@ -1,11 +1,3 @@
-import axios from 'axios';
-
-import { ApiUrl } from '../../constants/constants';
-import {
-  fetchUserFailure,
-  fetchUserRequest,
-  fetchUserSuccess,
-} from './userActions';
 import {
   FETCH_USER_FAILURE,
   FETCH_USER_REQUEST,
@@ -13,7 +5,7 @@ import {
 } from './userTypes';
 
 const initialState = {
-  loading: false,
+  loading: true,
   user: null,
   error: '',
 };
@@ -23,7 +15,7 @@ const userReducer = (state = initialState, action) => {
     case FETCH_USER_REQUEST:
       return {
         ...state,
-        loading: true,
+        loading: false,
       };
     case FETCH_USER_SUCCESS:
       return {

@@ -10,6 +10,8 @@ import Dashboard2, { screenOptions as dashboard2ScreenOption } from '../screens/
 import WelcomeScreen, { screenOptions as welcomeScreenOption } from '../screens/WelcomeScreen';
 import CreateUser, { screenOptions as createUserScreenOptions } from '../screens/CreateUser';
 import UserList, { screenOptions as UsersScreenOptions } from '../screens/UserList';
+import CreateLead, { screenOptions as createLeadScreenOptions } from '../screens/CreateLead';
+import LeadList, { screenOptions as leadListScreenOptions } from '../screens/LeadList';
 
 const defaultNavOptions = {
   headerStyle: {
@@ -68,6 +70,16 @@ export const ScreensNavigator = () => {
         name="Users"
         component={UserList}
         options={UsersScreenOptions}
+      />
+      <ScreensDrawerNavigator.Screen
+        name="Create Lead"
+        component={CreateLead}
+        options={createLeadScreenOptions}
+      />
+      <ScreensDrawerNavigator.Screen
+        name="Leads"
+        component={LeadList}
+        options={leadListScreenOptions}
       />
     </ScreensDrawerNavigator.Navigator>
   );

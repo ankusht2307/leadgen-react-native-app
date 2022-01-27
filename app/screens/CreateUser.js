@@ -20,7 +20,7 @@ import AppButton from '../components/UI/Button';
 import Colors from '../constants/Colors';
 import UserSchema from '../utils/validatiors/UserSchema';
 import AppPicker from '../components/UI/Picker';
-import createUser from '../service/user/userService';
+import { createUser } from '../service/user/userService';
 import {
   fetchUserFailure,
   fetchUserRequest,
@@ -45,7 +45,6 @@ const CreateUser = ({ navigation }) => {
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
-    // console.log(user);
   }, [user]);
 
   const {
@@ -86,6 +85,14 @@ const CreateUser = ({ navigation }) => {
           <Gradient styleProps={styles.loginWrapper}>
             <Card style={styles.loginContainer}>
               <ScrollView keyboardShouldPersistTaps="always">
+              <AppInput
+                  label="Name"
+                  name="name"
+                  keyboardType="default"
+                  autoCapitalize="none"
+                  control={control}
+                  errors={errors}
+              />
                 <AppInput
                   label="E-Mail"
                   name="email"

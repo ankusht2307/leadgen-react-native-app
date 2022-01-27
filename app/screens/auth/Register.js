@@ -25,9 +25,7 @@ const Register = ({ navigation }) => {
   const user = useSelector((state) => state.register.user);
 
   useEffect(() => {
-    console.log('useffect', user);
     if (user.data) {
-      console.log(navigation);
       navigation.navigate('AuthScreeen');
     }
   }, [user.data]);

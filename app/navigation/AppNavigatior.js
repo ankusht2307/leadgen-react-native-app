@@ -5,11 +5,10 @@ import { AuthNavigatior, ScreensNavigator } from './RootNavigator';
 
 const AppNavigator = () => {
   const user = useSelector((state) => state.login.user);
-
   return (
     <NavigationContainer>
-      {user && <AuthNavigatior />}
-      {!user && <ScreensNavigator />}
+      {!user && <AuthNavigatior />}
+      {user && <ScreensNavigator />}
     </NavigationContainer>
   );
 };
