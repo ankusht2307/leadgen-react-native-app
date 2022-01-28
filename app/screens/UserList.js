@@ -15,6 +15,7 @@ import Gradient from '../components/Gradient';
 import Card from '../components/UI/Card';
 import { getUsers } from '../service/user/userService';
 import Colors from '../constants/Colors';
+import DefaultText from '../components/UI/DefaultText';
 
 const UserList = () => {
   const dispatch = useDispatch();
@@ -37,17 +38,17 @@ const UserList = () => {
         <View style={styles.screen}>
           <Gradient>
             <Card style={styles.loginContainer}>
-              {loading ? (
-                <View>
-                  <Text>Loading...</Text>
-                </View>
+              {!user.data ? (
+                <DefaultText>
+                  <Text>No Users Found</Text>
+                </DefaultText>
               ) : (
                 <FlatList
                   data={user.data}
                   renderItem={({ item }) => (
                     <View key={item.email} style={styles.listItem}>
                       <Text>
-Name:
+                        Name:
 {' '}
 {item.name ? item.name : 'No name saved'}
                       </Text>

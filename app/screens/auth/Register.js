@@ -25,10 +25,10 @@ const Register = ({ navigation }) => {
   const user = useSelector((state) => state.register.user);
 
   useEffect(() => {
-    if (user.data) {
+    if (user) {
       navigation.navigate('AuthScreeen');
     }
-  }, [user.data]);
+  }, [navigation, user]);
 
   const {
     handleSubmit,

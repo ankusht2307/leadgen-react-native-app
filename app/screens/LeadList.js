@@ -16,6 +16,8 @@ import Gradient from '../components/Gradient';
 import Card from '../components/UI/Card';
 import Colors from '../constants/Colors';
 import { getLeadsByUser } from '../service/user/leadService';
+import UserList from './UserList';
+import DefaultText from '../components/UI/DefaultText';
 
 const LeadList = () => {
   const dispatch = useDispatch();
@@ -38,101 +40,107 @@ const LeadList = () => {
         <View style={styles.screen}>
           <Gradient>
             <Card style={styles.loginContainer}>
-              <FlatList
-                data={lead.data}
-                renderItem={({ item }) => (
-                  // eslint-disable-next-line no-underscore-dangle
-                  <View key={item._id} style={styles.listItem}>
-                    <Text>
+              {UserList.data ? (
+                <FlatList
+                  data={lead.data}
+                  renderItem={({ item }) => (
+                    // eslint-disable-next-line no-underscore-dangle
+                    <View key={item._id} style={styles.listItem}>
+                      <Text>
 Handler Name:
 {' '}
 {item.handler}
-                    </Text>
-                    <Text>
+                      </Text>
+                      <Text>
 Platform:
 {' '}
 {item.platform}
-                    </Text>
-                    <Text>
+                      </Text>
+                      <Text>
 Profile:
 {' '}
 {item.profile}
-                    </Text>
-                    <Text>
+                      </Text>
+                      <Text>
 Rate Applied:
 {' '}
 {item.rateApplied}
-                    </Text>
-                    <Text>
+                      </Text>
+                      <Text>
 Rate Range:
 {' '}
 {item.rateRange}
-                    </Text>
-                    <Text>
+                      </Text>
+                      <Text>
 Job Type:
 {' '}
 {item.jobType}
-                    </Text>
-                    <Text>
+                      </Text>
+                      <Text>
 Mode:
 {' '}
 {item.mode}
-                    </Text>
-                    <Text>
+                      </Text>
+                      <Text>
 Lead Url:
 {' '}
 {item.leadUrl}
-                    </Text>
-                    <Text>
+                      </Text>
+                      <Text>
 Status:
 {' '}
 {item.status}
-                    </Text>
-                    <Text>
+                      </Text>
+                      <Text>
 Client Name:
 {' '}
 {item.clientName}
-                    </Text>
-                    <Text>
+                      </Text>
+                      <Text>
 Primary Skills:
 {' '}
 {item.primarySkills}
-                    </Text>
-                    <Text>
+                      </Text>
+                      <Text>
 Secondary Skills:
 {' '}
 {item.secondarySkills}
-                    </Text>
-                    <Text>
+                      </Text>
+                      <Text>
 Connects Used:
 {' '}
 {item.connectsUsed}
-                    </Text>
-                    <Text>
+                      </Text>
+                      <Text>
 Total Spent:
 {' '}
 {item.totalSpent}
-                    </Text>
-                    <Text>
+                      </Text>
+                      <Text>
 Average Pay:
 {' '}
 {item.averagePay}
-                    </Text>
-                    <Text>
+                      </Text>
+                      <Text>
 Other Open Jobs:
 {' '}
 {item.otherOpenJob}
-                    </Text>
-                    <Text>
+                      </Text>
+                      <Text>
 Comments:
 {' '}
 {item.comments}
-                    </Text>
-                  </View>
-                )}
-                // eslint-disable-next-line no-underscore-dangle
-                keyExtractor={(item) => item._id}
-              />
+                      </Text>
+                    </View>
+                  )}
+                  // eslint-disable-next-line no-underscore-dangle
+                  keyExtractor={(item) => item._id}
+                />
+              ) : (
+                <DefaultText>
+                  <Text>No Leads Found</Text>
+                </DefaultText>
+              )}
             </Card>
           </Gradient>
         </View>
