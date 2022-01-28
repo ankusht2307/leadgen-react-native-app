@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {
   View,
   StyleSheet,
@@ -9,47 +9,25 @@ import {
   Text,
   FlatList,
 } from 'react-native';
+import { useIsFocused } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import Toast from 'react-native-toast-message';
 
 import Gradient from '../components/Gradient';
 import Card from '../components/UI/Card';
 import Colors from '../constants/Colors';
 import { getLeadsByUser } from '../service/user/leadService';
-import {
-  fetchLeadFailure,
-  fetchLeadRequest,
-  fetchLeadSuccess,
-} from '../redux/lead/leadActions';
 
-const LeadList = ({ navigation }) => {
+const LeadList = () => {
   const dispatch = useDispatch();
-  const lead = useSelector((state) => state.lead);
-  const [leads, setLeads] = useState([]);
+  const isFocused = useIsFocused();
+  const { lead, loading } = useSelector((state) => state.lead);
 
   useEffect(() => {
-    getLeads();
-    setLeads(lead.lead);
-  }, [lead.loading]);
-
-  const getLeads = async () => {
-    dispatch(fetchLeadRequest);
-    const result = await getLeadsByUser();
-    if (result.data) {
-      Toast.show({
-        type: 'success',
-        text2: result.message,
-      });
-      dispatch(fetchLeadSuccess(result.data));
-      //   navigation.navigate('Leads');
-    } else {
-      dispatch(fetchLeadFailure(result));
-      Toast.show({
-        type: 'error',
-        text2: result.message,
-      });
+    if (isFocused) {
+      dispatch(getLeadsByUser());
     }
-  };
+  }, [dispatch, isFocused, loading]);
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -61,7 +39,7 @@ const LeadList = ({ navigation }) => {
           <Gradient>
             <Card style={styles.loginContainer}>
               <FlatList
-                data={leads}
+                data={lead.data}
                 renderItem={({ item }) => (
                   // eslint-disable-next-line no-underscore-dangle
                   <View key={item._id} style={styles.listItem}>
@@ -152,6 +130,8 @@ Comments:
                     </Text>
                   </View>
                 )}
+                // eslint-disable-next-line no-underscore-dangle
+                keyExtractor={(item) => item._id}
               />
             </Card>
           </Gradient>

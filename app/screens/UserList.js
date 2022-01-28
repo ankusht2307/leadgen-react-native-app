@@ -19,8 +19,8 @@ import Colors from '../constants/Colors';
 const UserList = () => {
   const dispatch = useDispatch();
   const isFocused = useIsFocused();
-  const { error, loading, user } = useSelector((state) => state.user);
-  console.log('called');
+  const { loading, user } = useSelector((state) => state.user);
+
   useEffect(() => {
     if (isFocused) {
       dispatch(getUsers());
@@ -49,7 +49,7 @@ const UserList = () => {
                       <Text>
 Name:
 {' '}
-{item.name ? item.name : 'name'}
+{item.name ? item.name : 'No name saved'}
                       </Text>
                       <Text>
 Role:
@@ -68,6 +68,7 @@ No, of leads Submitted:
                       </Text>
                     </View>
                   )}
+                  keyExtractor={(item) => item.email}
                 />
               )}
             </Card>

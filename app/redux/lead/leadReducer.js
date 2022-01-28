@@ -5,7 +5,7 @@ import {
 } from './leadTypes';
 
 const initialState = {
-  loading: false,
+  loading: true,
   lead: null,
   error: '',
 };
@@ -15,7 +15,7 @@ const leadReducer = (state = initialState, action) => {
     case FETCH_LEAD_REQUEST:
       return {
         ...state,
-        loading: true,
+        loading: false,
       };
     case FETCH_LEAD_SUCCESS:
       return {

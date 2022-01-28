@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b35f228f-d26b-4f92-9f40-b9d28dcf7cf5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/components/UI/Loader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/redux/lead/leadActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/redux/lead/leadReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/redux/lead/leadTypes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/screens/CreateLead.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/screens/LeadList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/service/user/leadService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/utils/validatiors/LeadSchema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/navigation/AppNavigatior.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/navigation/AppNavigatior.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/navigation/RootNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/navigation/RootNavigator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/redux/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/redux/user/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/redux/user/userReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/screens/CreateUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/CreateUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/screens/UserList.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/UserList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/user/userService.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/user/userService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/utils/validatiors/UserSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/validatiors/UserSchema.js" afterDir="false" />
-    </list>
+    <list default="true" id="b35f228f-d26b-4f92-9f40-b9d28dcf7cf5" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
