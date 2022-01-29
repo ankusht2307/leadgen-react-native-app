@@ -16,7 +16,6 @@ import Gradient from '../components/Gradient';
 import Card from '../components/UI/Card';
 import Colors from '../constants/Colors';
 import { getLeadsByUser } from '../service/user/leadService';
-import UserList from './UserList';
 import DefaultText from '../components/UI/DefaultText';
 
 const LeadList = () => {
@@ -40,7 +39,7 @@ const LeadList = () => {
         <View style={styles.screen}>
           <Gradient>
             <Card style={styles.loginContainer}>
-              {UserList.data ? (
+              {lead ? (
                 <FlatList
                   data={lead.data}
                   renderItem={({ item }) => (

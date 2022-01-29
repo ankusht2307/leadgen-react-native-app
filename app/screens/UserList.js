@@ -38,7 +38,7 @@ const UserList = () => {
         <View style={styles.screen}>
           <Gradient>
             <Card style={styles.loginContainer}>
-              {!user.data ? (
+              {!user ? (
                 <DefaultText>
                   <Text>No Users Found</Text>
                 </DefaultText>

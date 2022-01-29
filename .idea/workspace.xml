@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b35f228f-d26b-4f92-9f40-b9d28dcf7cf5" name="Default Changelist" comment="" />
+    <list default="true" id="b35f228f-d26b-4f92-9f40-b9d28dcf7cf5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/leadgen-app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/leadgen-app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/navigation/RootNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/navigation/RootNavigator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/screens/LeadList.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/LeadList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/screens/UserList.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/UserList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/screens/auth/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/auth/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/screens/auth/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/auth/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +21,12 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/app/screens/CreateLead.js" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1xcQL5A8pdTSQdHpwExt97k64Z9" />
   <component name="ProjectViewState">
@@ -21,7 +36,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="ToolWindowEmulator.ShowToolbar" value="false" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="com.android.tools.idea.emulator.zoom.toolbar.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

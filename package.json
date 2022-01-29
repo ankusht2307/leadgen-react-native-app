@@ -9,6 +9,7 @@
     "lint": "eslint *.js **/*.js src/**/*.js"
   },
   "dependencies": {
+    "@expo/vector-icons": "^12.0.5",
     "@hookform/resolvers": "^2.8.0",
     "@react-native-picker/picker": "1.16.1",
     "@react-navigation/drawer": "^6.1.4",
