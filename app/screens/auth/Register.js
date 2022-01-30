@@ -18,7 +18,7 @@ import AppInput from '../../components/UI/Input';
 import AppButton from '../../components/UI/Button';
 import AuthenticationFormSchema from '../../utils/validatiors/AuthenticationFormValidation';
 import Gradient from '../../components/Gradient';
-import { requestRegister } from '../../redux/register/registerActions';
+import { register } from '../../service/auth/authService';
 
 const Register = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const Register = ({ navigation }) => {
   });
 
   const onSubmit = (data) => {
-    dispatch(requestRegister(data));
+    dispatch(register(data));
   };
 
   return (
@@ -96,6 +96,7 @@ const Register = ({ navigation }) => {
 
 export const screenOptions = {
   headerTitle: 'Register',
+  headerRight: null
 };
 
 const styles = StyleSheet.create({

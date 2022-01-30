@@ -18,7 +18,7 @@ import AppInput from '../../components/UI/Input';
 import AppButton from '../../components/UI/Button';
 import AuthenticationFormSchema from '../../utils/validatiors/AuthenticationFormValidation';
 import Gradient from '../../components/Gradient';
-import { requestLogin } from '../../redux/login/loginReducer';
+import { login } from '../../service/auth/authService';
 
 const Login = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ const Login = ({ navigation }) => {
   });
 
   const onSubmit = (data) => {
-    dispatch(requestLogin(data));
+    dispatch(login(data));
   };
 
   return (
@@ -88,6 +88,7 @@ const Login = ({ navigation }) => {
 
 export const screenOptions = {
   headerTitle: 'Login',
+  headerRight: null
 };
 
 const styles = StyleSheet.create({

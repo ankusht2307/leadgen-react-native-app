@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import leadReducer from './lead/leadReducer';
-import { loginReducer } from './login/loginReducer';
+import loginReducer from './login/loginReducer';
 import registerReducer from './register/registerReducer';
 import userReducer from './user/userReducer';
 

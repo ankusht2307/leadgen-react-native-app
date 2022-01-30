@@ -1,16 +1,53 @@
-import { ApiUrl } from '../../constants/constants';
-import httpCommon from '../../utils/http/http.common';
+import {
+  fetchLoginFailure,
+  fetchLoginRequest,
+  fetchLoginSuccess,
+} from '../../redux/login/loginActions';
+import {
+  fetchRegisterFailure,
+  fetchRegisterRequest,
+  fetchRegisterSuccess,
+} from '../../redux/register/registerActions';
+import http from '../../utils/http/http.common';
 
-const logout = async (props) => {
-  console.log(props);
-  await httpCommon
-    .post(`${ApiUrl}/auth/logout`)
-    .then((response) => {
-      //   console.log(response);
-    })
-    .catch((error) => {
-      //   console.log(error);
-    });
+export const login = (userCredentials) => {
+  return async (dispatch) => {
+    dispatch(fetchLoginRequest);
+    http
+      .post('/auth/login', userCredentials)
+      .then((res) => {
+        dispatch(fetchLoginSuccess(res.data));
+      })
+      .catch((error) => {
+        dispatch(fetchLoginFailure(error));
+      });
+  };
 };
 
-export default logout;
+export const logout = () => {
+  return async (dispatch) => {
+    dispatch(fetchLoginRequest);
+    http
+      .post('/auth/logout')
+      .then((res) => {
+        dispatch(fetchLoginSuccess(res.data.data));
+      })
+      .catch((error) => {
+        dispatch(fetchLoginFailure(error));
+      });
+  };
+};
+
+export const register = (userCredentials) => {
+  return async (dispatch) => {
+    dispatch(fetchRegisterRequest);
+    http
+      .post('auth/register', userCredentials)
+      .then((res) => {
+        dispatch(fetchRegisterSuccess(res.data));
+      })
+      .catch((error) => {
+        dispatch(fetchRegisterFailure(error));
+      });
+  };
+};

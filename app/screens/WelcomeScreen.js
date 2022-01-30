@@ -31,6 +31,7 @@ const WelcomeScreen = ({ navigation }) => {
 
 export const screenOptions = {
   headerTitle: 'Bonami Software',
+  headerRight: null
 };
 
 const styles = StyleSheet.create({

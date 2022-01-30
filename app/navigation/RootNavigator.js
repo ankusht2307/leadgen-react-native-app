@@ -32,10 +32,10 @@ import CreateLead, {
 import LeadList, {
   screenOptions as leadListScreenOptions,
 } from '../screens/LeadList';
-import logout from '../service/auth/authService';
-import { requestLogin } from '../redux/login/loginReducer';
+import { logout } from '../service/auth/authService';
+import store from '../redux/store';
 
-const defaultNavOptions = (props) => ({
+const defaultNavOptions = () => ({
   headerStyle: {
     backgroundColor:
       Platform.OS === 'android' ? Colors.primary : Colors.primary,
@@ -53,18 +53,11 @@ const defaultNavOptions = (props) => ({
       name="logout"
       size={24}
       color="black"
-      onPress={() => doLogout(props)}
+      onPress={() => store.dispatch(logout())}
       style={styles.logout}
     />
   ),
 });
-
-// TODO: Needs work
-const doLogout = async (props) => {
-  requestLogin(null);
-  await logout();
-  props.navigation.navigate('AuthScreeen');
-};
 
 const AuthStackNavigator = createNativeStackNavigator();
 export const AuthNavigatior = () => {

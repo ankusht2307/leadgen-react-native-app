@@ -1,16 +1,8 @@
-import axios from 'axios';
 import {
   FETCH_LOGIN_FAILURE,
   FETCH_LOGIN_REQUEST,
   FETCH_LOGIN_SUCCESS,
 } from './loginTypes';
-
-import {
-  fetchLoginFailure,
-  fetchLoginRequest,
-  fetchLoginSuccess,
-} from './loginActions';
-import { ApiUrl } from '../../constants/constants';
 
 const initialState = {
   loading: false,
@@ -18,7 +10,7 @@ const initialState = {
   error: '',
 };
 
-export const loginReducer = (state = initialState, action) => {
+const loginReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_LOGIN_REQUEST:
       return {
@@ -42,17 +34,4 @@ export const loginReducer = (state = initialState, action) => {
   }
 };
 
-export const requestLogin = (userCredentials) => {
-  return (dispatch) => {
-    dispatch(fetchLoginRequest);
-    axios
-      .post(`${ApiUrl}/auth/login`, userCredentials)
-      .then((res) => {
-        const user = res.data;
-        dispatch(fetchLoginSuccess(user));
-      })
-      .catch((error) => {
-        dispatch(fetchLoginFailure(error));
-      });
-  };
-};
+export default loginReducer;
