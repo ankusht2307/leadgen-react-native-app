@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useEffect } from 'react';
 import {
   View,
@@ -8,6 +9,7 @@ import {
   Keyboard,
   Text,
   FlatList,
+  TouchableOpacity,
 } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,7 +20,7 @@ import Colors from '../constants/Colors';
 import { getLeadsByUser } from '../service/user/leadService';
 import DefaultText from '../components/UI/DefaultText';
 
-const LeadList = () => {
+const LeadList = ({ navigation }) => {
   const dispatch = useDispatch();
   const isFocused = useIsFocused();
   const { lead, loading } = useSelector((state) => state.lead);
@@ -28,6 +30,11 @@ const LeadList = () => {
       dispatch(getLeadsByUser());
     }
   }, [dispatch, isFocused, loading]);
+
+  const leadHandler = (leadId) => {
+    console.log(leadId);
+    navigation.navigate('Lead', { leadId });
+  };
 
   return (
     <KeyboardAvoidingView
@@ -43,8 +50,11 @@ const LeadList = () => {
                 <FlatList
                   data={lead.data}
                   renderItem={({ item }) => (
-                    // eslint-disable-next-line no-underscore-dangle
-                    <View key={item._id} style={styles.listItem}>
+                    <TouchableOpacity
+                      key={item._id}
+                      style={styles.listItem}
+                      onPress={() => leadHandler(item._id)}
+                    >
                       <Text>
 Handler Name:
 {' '}
@@ -130,7 +140,7 @@ Comments:
 {' '}
 {item.comments}
                       </Text>
-                    </View>
+                    </TouchableOpacity>
                   )}
                   // eslint-disable-next-line no-underscore-dangle
                   keyExtractor={(item) => item._id}

@@ -14,9 +14,6 @@ import Register, {
 import Dashboard, {
   screenOptions as dashboardScreenOption,
 } from '../screens/Dashboard';
-import Dashboard2, {
-  screenOptions as dashboard2ScreenOption,
-} from '../screens/Dashboard2';
 import WelcomeScreen, {
   screenOptions as welcomeScreenOption,
 } from '../screens/WelcomeScreen';
@@ -34,6 +31,7 @@ import LeadList, {
 } from '../screens/LeadList';
 import { logout } from '../service/auth/authService';
 import store from '../redux/store';
+import Lead, { screenOptions as leadScreenOptions } from '../screens/LeadScreen';
 
 const defaultNavOptions = () => ({
   headerStyle: {
@@ -60,6 +58,7 @@ const defaultNavOptions = () => ({
 });
 
 const AuthStackNavigator = createNativeStackNavigator();
+
 export const AuthNavigatior = () => {
   return (
     <AuthStackNavigator.Navigator screenOptions={defaultNavOptions()}>
@@ -93,11 +92,6 @@ export const ScreensNavigator = () => {
         options={dashboardScreenOption}
       />
       <Drawer.Screen
-        name="Dashboard2"
-        component={Dashboard2}
-        options={dashboard2ScreenOption}
-      />
-      <Drawer.Screen
         name="Create User"
         component={CreateUser}
         options={createUserScreenOptions}
@@ -117,6 +111,7 @@ export const ScreensNavigator = () => {
         component={LeadList}
         options={leadListScreenOptions}
       />
+      <Drawer.Screen name="Lead" component={Lead} options={leadScreenOptions} />
     </Drawer.Navigator>
   );
 };
