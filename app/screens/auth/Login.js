@@ -18,7 +18,7 @@ import AppInput from '../../components/UI/Input';
 import AppButton from '../../components/UI/Button';
 import AuthenticationFormSchema from '../../utils/validatiors/AuthenticationFormValidation';
 import Gradient from '../../components/Gradient';
-import { login } from '../../service/auth/authService';
+import { login } from '../../service/authService';
 
 const Login = ({ navigation }) => {
   const dispatch = useDispatch();

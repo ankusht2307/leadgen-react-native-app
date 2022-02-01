@@ -18,14 +18,14 @@ import AppInput from '../../components/UI/Input';
 import AppButton from '../../components/UI/Button';
 import AuthenticationFormSchema from '../../utils/validatiors/AuthenticationFormValidation';
 import Gradient from '../../components/Gradient';
-import { register } from '../../service/auth/authService';
+import { register } from '../../service/authService';
 
 const Register = ({ navigation }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.register.user);
 
   useEffect(() => {
-    if (user) {
+    if (user && user.data) {
       navigation.navigate('AuthScreeen');
     }
   }, [navigation, user]);
@@ -96,7 +96,7 @@ const Register = ({ navigation }) => {
 
 export const screenOptions = {
   headerTitle: 'Register',
-  headerRight: null
+  headerRight: null,
 };
 
 const styles = StyleSheet.create({

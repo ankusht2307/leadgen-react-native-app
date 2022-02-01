@@ -2,8 +2,8 @@ import {
   fetchLeadFailure,
   fetchLeadRequest,
   fetchLeadSuccess,
-} from '../../redux/lead/leadActions';
-import http from '../../utils/http/http.common';
+} from '../redux/lead/leadActions';
+import http from '../utils/http/http.common';
 
 export const createLead = async (leadData) => {
   let response;

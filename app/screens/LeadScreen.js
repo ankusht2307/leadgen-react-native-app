@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Gradient from '../components/Gradient';
 import Card from '../components/UI/Card';
-import { getLeadById } from '../service/user/leadService';
+import { getLeadById } from '../service/leadService';
 
 const Lead = ({ route }) => {
   const dispatch = useDispatch();
@@ -56,6 +56,9 @@ const Lead = ({ route }) => {
 
 export const screenOptions = {
   headerTitle: 'Lead',
+  drawerItemStyle: {
+    display: 'none'
+  }
 };
 
 const styles = StyleSheet.create({

@@ -29,7 +29,7 @@ import CreateLead, {
 import LeadList, {
   screenOptions as leadListScreenOptions,
 } from '../screens/LeadList';
-import { logout } from '../service/auth/authService';
+import { logout } from '../service/authService';
 import store from '../redux/store';
 import Lead, { screenOptions as leadScreenOptions } from '../screens/LeadScreen';
 

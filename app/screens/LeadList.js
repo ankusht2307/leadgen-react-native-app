@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Gradient from '../components/Gradient';
 import Card from '../components/UI/Card';
 import Colors from '../constants/Colors';
-import { getLeadsByUser } from '../service/user/leadService';
+import { getLeadsByUser } from '../service/leadService';
 import DefaultText from '../components/UI/DefaultText';
 
 const LeadList = ({ navigation }) => {

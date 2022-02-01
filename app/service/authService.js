@@ -2,13 +2,14 @@ import {
   fetchLoginFailure,
   fetchLoginRequest,
   fetchLoginSuccess,
-} from '../../redux/login/loginActions';
+} from '../redux/login/loginActions';
 import {
   fetchRegisterFailure,
   fetchRegisterRequest,
   fetchRegisterSuccess,
-} from '../../redux/register/registerActions';
-import http from '../../utils/http/http.common';
+} from '../redux/register/registerActions';
+import http from '../utils/http/http.common';
+import Toaster from './toasterService';
 
 export const login = (userCredentials) => {
   return async (dispatch) => {
@@ -16,9 +17,11 @@ export const login = (userCredentials) => {
     http
       .post('/auth/login', userCredentials)
       .then((res) => {
-        dispatch(fetchLoginSuccess(res.data));
-      })
-      .catch((error) => {
+          Toaster(res.data.message, 'success');
+          dispatch(fetchLoginSuccess(res.data));
+        })
+        .catch((error) => {
+        Toaster(error.response.data.message, 'error');
         dispatch(fetchLoginFailure(error));
       });
   };
@@ -44,6 +47,11 @@ export const register = (userCredentials) => {
     http
       .post('auth/register', userCredentials)
       .then((res) => {
+        if (res.data.data) {
+          Toaster(res.data.message, 'success');
+        } else {
+          Toaster(res.data.message, 'error');
+        }
         dispatch(fetchRegisterSuccess(res.data));
       })
       .catch((error) => {

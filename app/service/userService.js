@@ -2,8 +2,8 @@ import {
   fetchUserFailure,
   fetchUserRequest,
   fetchUserSuccess,
-} from '../../redux/user/userActions';
-import http from '../../utils/http/http.common';
+} from '../redux/user/userActions';
+import http from '../utils/http/http.common';
 
 export const createUser = async (userData) => {
   let response;

@@ -19,19 +19,18 @@ import AppInput from '../components/UI/Input';
 import AppButton from '../components/UI/Button';
 import Colors from '../constants/Colors';
 import LeadSchema from '../utils/validatiors/LeadSchema';
-import { createLead } from '../service/user/leadService';
+import { createLead } from '../service/leadService';
 import {
   fetchLeadFailure,
   fetchLeadRequest,
   fetchLeadSuccess,
 } from '../redux/lead/leadActions';
 
-const CreateLead = ({ navigation }) => {
+const CreateLead = () => {
   const dispatch = useDispatch();
   const lead = useSelector((state) => state.lead);
 
-  useEffect(() => {
-  }, [lead]);
+  useEffect(() => {}, [lead]);
 
   const {
     handleSubmit,
@@ -50,7 +49,7 @@ const CreateLead = ({ navigation }) => {
         text2: result.message,
       });
       dispatch(fetchLeadSuccess(result.data));
-    //   navigation.navigate('Users');
+      //   navigation.navigate('Users');
     } else {
       dispatch(fetchLeadFailure(result));
       Toast.show({

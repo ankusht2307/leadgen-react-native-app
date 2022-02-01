@@ -20,7 +20,7 @@ import AppButton from '../components/UI/Button';
 import Colors from '../constants/Colors';
 import UserSchema from '../utils/validatiors/UserSchema';
 import AppPicker from '../components/UI/Picker';
-import { createUser } from '../service/user/userService';
+import { createUser } from '../service/userService';
 import {
   fetchUserFailure,
   fetchUserRequest,

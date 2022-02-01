@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useIsFocused } from '@react-navigation/native';
 import Gradient from '../components/Gradient';
 import Card from '../components/UI/Card';
-import { getUsers } from '../service/user/userService';
+import { getUsers } from '../service/userService';
 import Colors from '../constants/Colors';
 import DefaultText from '../components/UI/DefaultText';
 
