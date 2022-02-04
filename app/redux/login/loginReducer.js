@@ -5,7 +5,7 @@ import {
 } from './loginTypes';
 
 const initialState = {
-  loading: false,
+  loading: true,
   user: null,
   error: '',
 };

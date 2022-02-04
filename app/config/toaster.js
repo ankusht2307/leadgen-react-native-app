@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { BaseToast, ErrorToast } from 'react-native-toast-message';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import ColorPalette from '../constants/Colors';
 
 /*
   1. Create the config
@@ -14,22 +14,16 @@ const ToastConfig = {
   success: (props) => (
     <BaseToast
       {...props}
-      style={styles.base}
+      style={styles.successStyle}
       contentContainerStyle={styles.contentContainerStyle}
-      text1Style={styles.baseText1Style}
+      text1Style={styles.successStyle}
     />
   ),
   /*
       Overwrite 'error' type,
       by modifying the existing `ErrorToast` component
     */
-  error: (props) => (
-    <ErrorToast
-      {...props}
-      text1Style={styles.text1Style}
-      text2Style={styles.text2Style}
-    />
-  ),
+  error: (props) => <ErrorToast {...props} text1Style={styles.errorStyle} />,
   /*
       Or create a completely new type - `tomatoToast`,
       building the layout from scratch.
@@ -38,7 +32,7 @@ const ToastConfig = {
       They will be passed when calling the `show` method (see below)
     */
   tomatoToast: ({ text1, props }) => (
-    <View style={styles.tomato}>
+    <View style={styles.warningStyle}>
       <Text>{text1}</Text>
       <Text>{props.uuid}</Text>
     </View>
@@ -46,23 +40,20 @@ const ToastConfig = {
 };
 
 const styles = StyleSheet.create({
-  tomato: {
+  contentContainerStyle: { paddingHorizontal: 15 },
+  successStyle: {
+    fontSize: 17,
+    borderLeftColor: ColorPalette.green,
+  },
+  errorStyle: {
+    fontSize: 17,
+    borderLeftColor: ColorPalette.red,
+  },
+  warningStyle: {
     height: 60,
     width: '100%',
-    backgroundColor: Colors.tomato,
+    backgroundColor: ColorPalette.tomato,
   },
-  text1Style: {
-    fontSize: 17,
-  },
-  text2Style: {
-    fontSize: 15,
-  },
-  baseText1Style: {
-    fontSize: 15,
-    fontWeight: '400',
-  },
-  contentContainerStyle: { paddingHorizontal: 15 },
-  base: { borderLeftColor: Colors.green },
 });
 
 export default ToastConfig;

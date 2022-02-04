@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import ColorPalette from '../../constants/Colors';
 
 const Button = ({ title, onHit, btnColor }) => {
   return (
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
   title: {
-    color: Colors.white,
+    color: ColorPalette.white,
     fontSize: 15,
     fontWeight: 'bold',
   },
