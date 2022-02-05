@@ -44,8 +44,7 @@ const CreateUser = ({ navigation }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
-  useEffect(() => {
-  }, [user]);
+  useEffect(() => {}, [user]);
 
   const {
     handleSubmit,
@@ -85,14 +84,14 @@ const CreateUser = ({ navigation }) => {
           <Gradient styleProps={styles.loginWrapper}>
             <Card style={styles.loginContainer}>
               <ScrollView keyboardShouldPersistTaps="always">
-              <AppInput
+                <AppInput
                   label="Name"
                   name="name"
                   keyboardType="default"
                   autoCapitalize="none"
                   control={control}
                   errors={errors}
-              />
+                />
                 <AppInput
                   label="E-Mail"
                   name="email"

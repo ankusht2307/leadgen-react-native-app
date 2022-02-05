@@ -50,3 +50,21 @@ export const getLeadById = (leadId) => {
     dispatch(fetchLeadSuccess(response.data));
   };
 };
+
+export const getTotalLeads = () => {
+  return async (dispatch) => {
+    dispatch(fetchLeadRequest);
+    // Have to declare the response variable outside the try block
+    let response;
+    try {
+      response = await http.get('/lead/all');
+    } catch (error) {
+      // Ensure we only catch network errors
+      dispatch(fetchLeadFailure(error));
+      // Bail out early on failure
+      return;
+    }
+    // We now have the result and there's no error. Dispatch "fulfilled".
+    dispatch(fetchLeadSuccess(response.data));
+  };
+};

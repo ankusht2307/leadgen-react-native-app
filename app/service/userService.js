@@ -4,6 +4,7 @@ import {
   fetchUserSuccess,
 } from '../redux/user/userActions';
 import http from '../utils/http/http.common';
+import Toaster from './toasterService';
 
 export const createUser = async (userData) => {
   let response;
@@ -22,9 +23,11 @@ export const getUsers = () => {
     let response;
     try {
       response = await http.get('/user');
+      Toaster(response.data.message, 'success');
     } catch (error) {
       // Ensure we only catch network errors
       dispatch(fetchUserFailure(error));
+      Toaster('Something went wrong', 'error');
       // Bail out early on failure
       return;
     }

@@ -31,7 +31,12 @@ import LeadList, {
 } from '../screens/LeadList';
 import { logout } from '../service/authService';
 import store from '../redux/store';
-import Lead, { screenOptions as leadScreenOptions } from '../screens/LeadScreen';
+import Lead, {
+  screenOptions as leadScreenOptions,
+} from '../screens/LeadScreen';
+import TotalLeads, {
+  screenOptions as totalLeadScreenOptions,
+} from '../screens/TotalLeads';
 
 const defaultNavOptions = () => ({
   headerStyle: {
@@ -80,10 +85,10 @@ export const AuthNavigatior = () => {
     </AuthStackNavigator.Navigator>
   );
 };
-
 const Drawer = createDrawerNavigator();
 
-export const ScreensNavigator = () => {
+export const ScreensNavigator = ({ user }) => {
+  const role = user && user.data.role.toString();
   return (
     <Drawer.Navigator screenOptions={defaultNavOptions}>
       <Drawer.Screen
@@ -94,12 +99,22 @@ export const ScreensNavigator = () => {
       <Drawer.Screen
         name="Create User"
         component={CreateUser}
-        options={createUserScreenOptions}
+        options={{
+          ...createUserScreenOptions,
+          drawerItemStyle: {
+            display: role === 'super-admin' ? 'flex' : 'none',
+          },
+        }}
       />
       <Drawer.Screen
         name="Users"
         component={UserList}
-        options={UsersScreenOptions}
+        options={{
+          ...UsersScreenOptions,
+          drawerItemStyle: {
+            display: role === 'super-admin' ? 'flex' : 'none',
+          },
+        }}
       />
       <Drawer.Screen
         name="Create Lead"
@@ -112,6 +127,16 @@ export const ScreensNavigator = () => {
         options={leadListScreenOptions}
       />
       <Drawer.Screen name="Lead" component={Lead} options={leadScreenOptions} />
+      <Drawer.Screen
+        name="Total Leads"
+        component={TotalLeads}
+        options={{
+          ...totalLeadScreenOptions,
+          drawerItemStyle: {
+            display: role === 'super-admin' ? 'flex' : 'none',
+          },
+        }}
+      />
     </Drawer.Navigator>
   );
 };

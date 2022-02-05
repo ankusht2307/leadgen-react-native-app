@@ -17,17 +17,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import Gradient from '../components/Gradient';
 import Card from '../components/UI/Card';
 import Colors from '../constants/Colors';
-import { getLeadsByUser } from '../service/leadService';
+import { getTotalLeads } from '../service/leadService';
 import DefaultText from '../components/UI/DefaultText';
 
-const LeadList = ({ navigation }) => {
+const TotalLeads = ({ navigation }) => {
   const dispatch = useDispatch();
   const isFocused = useIsFocused();
   const { lead, loading } = useSelector((state) => state.lead);
 
   useEffect(() => {
     if (isFocused) {
-      dispatch(getLeadsByUser());
+      dispatch(getTotalLeads());
     }
   }, [dispatch, isFocused, loading]);
 
@@ -158,7 +158,7 @@ Comments:
 };
 
 export const screenOptions = {
-  headerTitle: 'Leads',
+  headerTitle: 'Total Leads',
 };
 
 const styles = StyleSheet.create({
@@ -177,4 +177,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LeadList;
+export default TotalLeads;
