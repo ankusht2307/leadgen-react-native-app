@@ -11,11 +11,11 @@ import {
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useIsFocused } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import Gradient from '../components/Gradient';
-import Card from '../components/UI/Card';
 import { getUsers } from '../service/userService';
-import Colors from '../constants/Colors';
 import DefaultText from '../components/UI/DefaultText';
+import ColorPalette from '../constants/Colors';
 
 const UserList = () => {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const UserList = () => {
       dispatch(getUsers());
     }
   }, [dispatch, isFocused, loading]);
-
+  console.log(user);
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -37,42 +37,39 @@ const UserList = () => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.screen}>
           <Gradient>
-            <Card style={styles.loginContainer}>
-              {!user ? (
-                <DefaultText>
-                  <Text>No Users Found</Text>
-                </DefaultText>
-              ) : (
-                <FlatList
-                  data={user.data}
-                  renderItem={({ item }) => (
-                    <View key={item.email} style={styles.listItem}>
-                      <Text>
-                        Name:
-{' '}
-{item.name ? item.name : 'No name saved'}
+            {user && user.data && user.data.length ? (
+              <FlatList
+                style={styles.loginContainer}
+                data={user.data}
+                renderItem={({ item }) => (
+                  <TouchableOpacity key={item.email} style={styles.listItem}>
+                    <Text style={styles.listItemData}>
+                      <Text style={styles.listItemLabel}>Name: </Text>
+                      {item.name ? item.name : 'No name saved'}
+                    </Text>
+                    <Text style={styles.listItemData}>
+                      <Text style={styles.listItemLabel}>Role: </Text>
+                      {item.role.toString()}
+                    </Text>
+                    <Text style={styles.listItemData}>
+                      <Text style={styles.listItemLabel}>Designation: </Text>
+                      {item.designation}
+                    </Text>
+                    <Text style={styles.listItemData}>
+                      <Text style={styles.listItemLabel}>
+                        No, of leads Submitted:
                       </Text>
-                      <Text>
-Role:
-{' '}
-{item.role.toString()}
-                      </Text>
-                      <Text>
-Designation:
-{' '}
-{item.designation}
-                      </Text>
-                      <Text>
-No, of leads Submitted:
-{' '}
-{item.leads.length}
-                      </Text>
-                    </View>
-                  )}
-                  keyExtractor={(item) => item.email}
-                />
-              )}
-            </Card>
+                      {item.leads.length}
+                    </Text>
+                  </TouchableOpacity>
+                )}
+                keyExtractor={(item) => item.email}
+              />
+            ) : (
+              <DefaultText styles={styles.noLeadStyles}>
+                <Text style={styles.noLeadText}>No Users Found</Text>
+              </DefaultText>
+            )}
           </Gradient>
         </View>
       </TouchableWithoutFeedback>
@@ -89,14 +86,35 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   loginContainer: {
-    padding: 20,
+    padding: 5,
     marginTop: 0,
+    backgroundColor: ColorPalette.transparent,
+    borderBottomStartRadius: 0,
+    borderBottomEndRadius: 0,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
   },
   listItem: {
-    borderBottomColor: Colors.tomato,
-    borderBottomWidth: 1,
-    marginTop: 5,
-    marginBottom: 5,
+    padding: 10,
+    marginBottom: 10,
+    backgroundColor: ColorPalette.white,
+    elevation: 5,
+  },
+  listItemLabel: {
+    fontFamily: 'open-sans-bold',
+  },
+  listItemData: {
+    fontFamily: 'open-sans',
+  },
+  noLeadStyles: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  noLeadText: {
+    fontFamily: 'open-sans-bold',
+    color: ColorPalette.grey,
+    fontWeight: 'bold',
   },
 });
 

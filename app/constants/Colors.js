@@ -7,6 +7,8 @@ const ColorPalette = {
   silver: '#ccc',
   tomato: '#ff6347',
   green: '#33cc33',
+  transparent: 'transparent',
+  grey: '#2C3333',
 };
 
 export default ColorPalette;

@@ -20,7 +20,7 @@ const Lead = ({ route }) => {
   const dispatch = useDispatch();
   const lead = useSelector((state) => state.lead.lead.data);
   const isFocused = useIsFocused();
-
+  console.log(lead);
   useEffect(() => {
     if (isFocused) {
       dispatch(getLeadById(route.params.leadId));
@@ -39,7 +39,66 @@ const Lead = ({ route }) => {
             <Card style={styles.leadContainer}>
               {lead ? (
                 <View>
-                  <Text>{lead.mode}</Text>
+                  <Text style={styles.listItemData}>
+                    <Text style={styles.listItemLabel}>Handler Name: </Text>
+                    {lead.handler}
+                  </Text>
+                  <Text style={styles.listItemData}>
+                    <Text style={styles.listItemLabel}>Client Name: </Text>
+                    {lead.clientName}
+                  </Text>
+                  <Text style={styles.listItemData}>
+                    <Text style={styles.listItemLabel}>Platform: </Text>
+                    {lead.platform}
+                  </Text>
+                  <Text style={styles.listItemData}>
+                    <Text style={styles.listItemLabel}>Status: </Text>
+                    {lead.status}
+                  </Text>
+                  <Text style={styles.listItemData}>
+                    <Text style={styles.listItemLabel}>Job Type: </Text>
+                    {lead.jobType}
+                  </Text>
+                  <Text style={styles.listItemData}>
+                    <Text style={styles.listItemLabel}>Rate Applied: </Text>
+                    {lead.rateApplied}
+                  </Text>
+                  <Text style={styles.listItemData}>
+                    <Text style={styles.listItemLabel}>Connects Used: </Text>
+                    {lead.connectsUsed}
+                  </Text>
+                  <Text style={styles.listItemData}>
+                    <Text style={styles.listItemLabel}>Total Spent: </Text>
+                    {lead.totalSpent}
+                  </Text>
+                  <Text style={styles.listItemData}>
+                    <Text style={styles.listItemLabel}>Mode: </Text>
+                    {lead.mode}
+                  </Text>
+                  <Text style={styles.listItemData}>
+                    <Text style={styles.listItemLabel}>Lead Url: </Text>
+                    {lead.leadUrl}
+                  </Text>
+                  <Text style={styles.listItemData}>
+                    <Text style={styles.listItemLabel}>Rate Range: </Text>
+                    {lead.rateRange}
+                  </Text>
+                  <Text style={styles.listItemData}>
+                    <Text style={styles.listItemLabel}>Primary Skills: </Text>
+                    {lead.primarySkills}
+                  </Text>
+                  <Text style={styles.listItemData}>
+                    <Text style={styles.listItemLabel}>Secondary Skills: </Text>
+                    {lead.secondarySkills}
+                  </Text>
+                  <Text style={styles.listItemData}>
+                    <Text style={styles.listItemLabel}>Profile: </Text>
+                    {lead.profile}
+                  </Text>
+                  <Text style={styles.listItemData}>
+                    <Text style={styles.listItemLabel}>Comments: </Text>
+                    {lead.comments}
+                  </Text>
                 </View>
               ) : (
                 <View>
@@ -57,8 +116,8 @@ const Lead = ({ route }) => {
 export const screenOptions = {
   headerTitle: 'Lead',
   drawerItemStyle: {
-    display: 'none'
-  }
+    display: 'none',
+  },
 };
 
 const styles = StyleSheet.create({
@@ -68,6 +127,12 @@ const styles = StyleSheet.create({
   leadContainer: {
     padding: 20,
     marginTop: 0,
+  },
+  listItemLabel: {
+    fontFamily: 'open-sans-bold',
+  },
+  listItemData: {
+    fontFamily: 'open-sans',
   },
 });
 

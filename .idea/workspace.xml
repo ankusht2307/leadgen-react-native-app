@@ -6,13 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="b35f228f-d26b-4f92-9f40-b9d28dcf7cf5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/navigation/AppNavigatior.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/navigation/AppNavigatior.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/navigation/RootNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/navigation/RootNavigator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/screens/CreateUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/CreateUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/UI/DefaultText.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/UI/DefaultText.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/constants/Colors.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/constants/Colors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/screens/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/Dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/screens/LeadList.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/LeadList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/leadService.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/leadService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/service/userService.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/userService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/utils/validatiors/AuthenticationFormValidation.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/validatiors/AuthenticationFormValidation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/screens/LeadScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/LeadScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/screens/TotalLeads.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/TotalLeads.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/screens/UserList.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/screens/UserList.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,9 +1,11 @@
 import React from 'react';
 import { View, StyleSheet, Image, Text, ScrollView } from 'react-native';
+import { useSelector } from 'react-redux';
 import Gradient from '../components/Gradient';
-import Colors from '../constants/Colors';
+import ColorPalette from '../constants/Colors';
 
 const Dashboard = () => {
+  const { login, lead } = useSelector((state) => state);
   return (
     <View style={styles.screen}>
       <Gradient>
@@ -17,118 +19,16 @@ const Dashboard = () => {
               />
             </View>
             <View style={styles.profileInfo}>
-              <Text style={styles.topInfo}>Jogn Doe </Text>
-              <Text style={styles.info}>johndoe@gmail.com</Text>
-              <Text style={styles.info}>Admin</Text>
+              <Text style={styles.topInfo}>{login.user.data.name}</Text>
+              <Text style={styles.info}>{login.user.data.email}</Text>
+              <Text style={styles.info}>{login.user.data.role.toString()}</Text>
             </View>
           </View>
-          <View style={styles.ProfileHeader}>
-            <View style={styles.profileInfo}>
-              <Text style={styles.info}>Jogn Doe </Text>
-              <Text style={styles.info}>johndoe@gmail.com</Text>
-              <Text style={styles.info}>Admin</Text>
-            </View>
-            <View style={styles.profileInfo}>
-              <Text style={styles.info}>Jogn Doe </Text>
-              <Text style={styles.info}>johndoe@gmail.com</Text>
-              <Text style={styles.info}>Admin</Text>
-            </View>
-          </View>
-          <View style={styles.ProfileHeader}>
-            <View style={styles.profileInfo}>
-              <Text style={styles.info}>Jogn Doe </Text>
-              <Text style={styles.info}>johndoe@gmail.com</Text>
-              <Text style={styles.info}>Admin</Text>
-            </View>
-            <View style={styles.profileInfo}>
-              <Text style={styles.info}>Jogn Doe </Text>
-              <Text style={styles.info}>johndoe@gmail.com</Text>
-              <Text style={styles.info}>Admin</Text>
-            </View>
-          </View>
-          <View style={styles.ProfileHeader}>
-            <View style={styles.profileInfo}>
-              <Text style={styles.info}>Jogn Doe </Text>
-              <Text style={styles.info}>johndoe@gmail.com</Text>
-              <Text style={styles.info}>Admin</Text>
-            </View>
-            <View style={styles.profileInfo}>
-              <Text style={styles.info}>Jogn Doe </Text>
-              <Text style={styles.info}>johndoe@gmail.com</Text>
-              <Text style={styles.info}>Admin</Text>
-            </View>
-          </View>
-          <View style={styles.ProfileHeader}>
-            <View style={styles.profileInfo}>
-              <Text style={styles.info}>Jogn Doe </Text>
-              <Text style={styles.info}>johndoe@gmail.com</Text>
-              <Text style={styles.info}>Admin</Text>
-            </View>
-            <View style={styles.profileInfo}>
-              <Text style={styles.info}>Jogn Doe </Text>
-              <Text style={styles.info}>johndoe@gmail.com</Text>
-              <Text style={styles.info}>Admin</Text>
-            </View>
-          </View>
-          <View style={styles.ProfileHeader}>
-            <View style={styles.profileInfo}>
-              <Text style={styles.info}>Jogn Doe </Text>
-              <Text style={styles.info}>johndoe@gmail.com</Text>
-              <Text style={styles.info}>Admin</Text>
-            </View>
-            <View style={styles.profileInfo}>
-              <Text style={styles.info}>Jogn Doe </Text>
-              <Text style={styles.info}>johndoe@gmail.com</Text>
-              <Text style={styles.info}>Admin</Text>
-            </View>
-          </View>
-          <View style={styles.ProfileHeader}>
-            <View style={styles.profileInfo}>
-              <Text style={styles.info}>Jogn Doe </Text>
-              <Text style={styles.info}>johndoe@gmail.com</Text>
-              <Text style={styles.info}>Admin</Text>
-            </View>
-            <View style={styles.profileInfo}>
-              <Text style={styles.info}>Jogn Doe </Text>
-              <Text style={styles.info}>johndoe@gmail.com</Text>
-              <Text style={styles.info}>Admin</Text>
-            </View>
-          </View>
-          <View style={styles.ProfileHeader}>
-            <View style={styles.profileInfo}>
-              <Text style={styles.info}>Jogn Doe </Text>
-              <Text style={styles.info}>johndoe@gmail.com</Text>
-              <Text style={styles.info}>Admin</Text>
-            </View>
-            <View style={styles.profileInfo}>
-              <Text style={styles.info}>Jogn Doe </Text>
-              <Text style={styles.info}>johndoe@gmail.com</Text>
-              <Text style={styles.info}>Admin</Text>
-            </View>
-          </View>
-          <View style={styles.ProfileHeader}>
-            <View style={styles.profileInfo}>
-              <Text style={styles.info}>Jogn Doe </Text>
-              <Text style={styles.info}>johndoe@gmail.com</Text>
-              <Text style={styles.info}>Admin</Text>
-            </View>
-            <View style={styles.profileInfo}>
-              <Text style={styles.info}>Jogn Doe </Text>
-              <Text style={styles.info}>johndoe@gmail.com</Text>
-              <Text style={styles.info}>Admin</Text>
-            </View>
-          </View>
-          <View style={styles.ProfileHeader}>
-            <View style={styles.profileInfo}>
-              <Text style={styles.info}>Jogn Doe </Text>
-              <Text style={styles.info}>johndoe@gmail.com</Text>
-              <Text style={styles.info}>Admin</Text>
-            </View>
-            <View style={styles.profileInfo}>
-              <Text style={styles.info}>Jogn Doe </Text>
-              <Text style={styles.info}>johndoe@gmail.com</Text>
-              <Text style={styles.info}>Admin</Text>
-            </View>
+          <View style={styles.userInfo}>
+            <Text>
+              <Text style={styles.userInfoLabel}>Total Leads: </Text>
+              {lead.lead.data.length ? lead.lead.data.length : 0}
+            </Text>
           </View>
         </ScrollView>
       </Gradient>
@@ -155,7 +55,7 @@ const styles = StyleSheet.create({
     height: 150,
     borderRadius: 150,
     borderWidth: 3,
-    borderColor: Colors.accent,
+    borderColor: ColorPalette.accent,
     overflow: 'hidden',
     marginVertical: 20,
   },
@@ -165,16 +65,24 @@ const styles = StyleSheet.create({
   },
   profileInfo: { width: '40%' },
   topInfo: {
-    color: Colors.black,
+    color: ColorPalette.black,
     marginTop: 5,
     fontSize: 25,
     fontWeight: 'bold',
   },
   info: {
-    color: Colors.black,
+    color: ColorPalette.black,
     marginTop: 5,
     fontSize: 15,
     fontWeight: 'bold',
+  },
+  userInfo: {
+    padding: 10,
+  },
+  userInfoLabel: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    fontFamily: 'open-sans-bold',
   },
 });
 

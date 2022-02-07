@@ -15,10 +15,9 @@ import { useIsFocused } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Gradient from '../components/Gradient';
-import Card from '../components/UI/Card';
-import Colors from '../constants/Colors';
 import { getTotalLeads } from '../service/leadService';
 import DefaultText from '../components/UI/DefaultText';
+import ColorPalette from '../constants/Colors';
 
 const TotalLeads = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -44,112 +43,42 @@ const TotalLeads = ({ navigation }) => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.screen}>
           <Gradient>
-            <Card style={styles.loginContainer}>
-              {lead ? (
-                <FlatList
-                  data={lead.data}
-                  renderItem={({ item }) => (
-                    <TouchableOpacity
-                      key={item._id}
-                      style={styles.listItem}
-                      onPress={() => leadHandler(item._id)}
-                    >
-                      <Text>
-Handler Name:
-{' '}
-{item.handler}
-                      </Text>
-                      <Text>
-Platform:
-{' '}
-{item.platform}
-                      </Text>
-                      <Text>
-Profile:
-{' '}
-{item.profile}
-                      </Text>
-                      <Text>
-Rate Applied:
-{' '}
-{item.rateApplied}
-                      </Text>
-                      <Text>
-Rate Range:
-{' '}
-{item.rateRange}
-                      </Text>
-                      <Text>
-Job Type:
-{' '}
-{item.jobType}
-                      </Text>
-                      <Text>
-Mode:
-{' '}
-{item.mode}
-                      </Text>
-                      <Text>
-Lead Url:
-{' '}
-{item.leadUrl}
-                      </Text>
-                      <Text>
-Status:
-{' '}
-{item.status}
-                      </Text>
-                      <Text>
-Client Name:
-{' '}
-{item.clientName}
-                      </Text>
-                      <Text>
-Primary Skills:
-{' '}
-{item.primarySkills}
-                      </Text>
-                      <Text>
-Secondary Skills:
-{' '}
-{item.secondarySkills}
-                      </Text>
-                      <Text>
-Connects Used:
-{' '}
-{item.connectsUsed}
-                      </Text>
-                      <Text>
-Total Spent:
-{' '}
-{item.totalSpent}
-                      </Text>
-                      <Text>
-Average Pay:
-{' '}
-{item.averagePay}
-                      </Text>
-                      <Text>
-Other Open Jobs:
-{' '}
-{item.otherOpenJob}
-                      </Text>
-                      <Text>
-Comments:
-{' '}
-{item.comments}
-                      </Text>
-                    </TouchableOpacity>
-                  )}
-                  // eslint-disable-next-line no-underscore-dangle
-                  keyExtractor={(item) => item._id}
-                />
-              ) : (
-                <DefaultText>
-                  <Text>No Leads Found</Text>
-                </DefaultText>
-              )}
-            </Card>
+            {lead && lead.data && lead.data.length ? (
+              <FlatList
+                style={styles.loginContainer}
+                data={lead.data}
+                renderItem={({ item }) => (
+                  <TouchableOpacity
+                    key={item._id}
+                    style={styles.listItem}
+                    onPress={() => leadHandler(item._id)}
+                  >
+                    <Text style={styles.listItemData}>
+                      <Text style={styles.listItemLabel}>Handler Name: </Text>
+                      {item.handler}
+                    </Text>
+                    <Text style={styles.listItemData}>
+                      <Text style={styles.listItemLabel}>Client Name: </Text>
+                      {item.clientName}
+                    </Text>
+                    <Text style={styles.listItemData}>
+                      <Text style={styles.listItemLabel}>Platform: </Text>
+                      {item.platform}
+                    </Text>
+                    <Text style={styles.listItemData}>
+                      <Text style={styles.listItemLabel}>Status: </Text>
+                      {item.status}
+                    </Text>
+                  </TouchableOpacity>
+                )}
+                // eslint-disable-next-line no-underscore-dangle
+                keyExtractor={(item) => item._id}
+              />
+            ) : (
+              <DefaultText styles={styles.noLeadStyles}>
+                <Text style={styles.noLeadText}>No Leads Found</Text>
+              </DefaultText>
+            )}
           </Gradient>
         </View>
       </TouchableWithoutFeedback>
@@ -166,14 +95,35 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   loginContainer: {
-    padding: 20,
+    padding: 5,
     marginTop: 0,
+    backgroundColor: ColorPalette.transparent,
+    borderBottomStartRadius: 0,
+    borderBottomEndRadius: 0,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
   },
   listItem: {
-    borderBottomColor: Colors.tomato,
-    borderBottomWidth: 1,
-    marginTop: 5,
-    marginBottom: 5,
+    padding: 10,
+    marginBottom: 10,
+    backgroundColor: ColorPalette.white,
+    elevation: 5,
+  },
+  listItemLabel: {
+    fontFamily: 'open-sans-bold',
+  },
+  listItemData: {
+    fontFamily: 'open-sans',
+  },
+  noLeadStyles: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  noLeadText: {
+    fontFamily: 'open-sans-bold',
+    color: ColorPalette.grey,
+    fontWeight: 'bold',
   },
 });
 
