@@ -27,7 +27,7 @@ const Dashboard = () => {
           <View style={styles.userInfo}>
             <Text>
               <Text style={styles.userInfoLabel}>Total Leads: </Text>
-              {lead.lead.data.length ? lead.lead.data.length : 0}
+              {lead && lead.lead && lead.lead.data.length ? lead.lead.data.length : 0}
             </Text>
           </View>
         </ScrollView>

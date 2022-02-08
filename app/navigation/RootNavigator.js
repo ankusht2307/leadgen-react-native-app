@@ -122,7 +122,7 @@ export const ScreensNavigator = ({ user }) => {
         options={createLeadScreenOptions}
       />
       <Drawer.Screen
-        name="Leads"
+        name="My Leads"
         component={LeadList}
         options={leadListScreenOptions}
       />

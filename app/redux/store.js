@@ -5,12 +5,20 @@ import loginReducer from './login/loginReducer';
 import registerReducer from './register/registerReducer';
 import userReducer from './user/userReducer';
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   login: loginReducer,
   register: registerReducer,
   user: userReducer,
   lead: leadReducer
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === 'USER_LOGOUT') {
+    return appReducer(undefined, action);
+  }
+
+  return appReducer(state, action);
+};
 
 /* eslint-disable no-underscore-dangle */
 const store = createStore(
